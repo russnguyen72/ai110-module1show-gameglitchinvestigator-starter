@@ -1,13 +1,14 @@
 import random
 import streamlit as st
 
+# FIXME: (get_range_for_difficulty) The range for the "Hard" difficulty is actually smaller than the "Normal" difficulty, making it easier instead of harder. This is a glitch that needs to be fixed. 
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 200
     return 1, 100
 
 
@@ -28,16 +29,16 @@ def parse_guess(raw: str):
 
     return True, value, None
 
-
+# FIXME: (check_guess) The function incorrectly tells the user to go higher when their guess is too high, and to go lower when their guess is too low. This is a glitch that needs to be fixed.
 def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
@@ -155,10 +156,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+        secret = st.session_state.secret
 
         outcome, message = check_guess(guess_int, secret)
 
