@@ -26,12 +26,22 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
+
+The game is a simple guessing game that gives players hint on the secret number. The player has a limited number of guesses and gets a higher or lower score depending on how many guesses they have remaining after they guess the secret number. If they run out of guesses, they lose.
+
 - [ ] Detail which bugs you found.
+
+Some bugs that I found is that the hint that the player gets for an incorrect guess lead the player in the wrong direction. For example, if the player guessed lower than the secret number, the program would incorrectly tell the player to guess lower. Another bug that I found is that the "New Game" button does not correctly start a new game, as the player cannot input any guesses.
+
 - [ ] Explain what fixes you applied.
+
+Some fixes that I have applied are fixing the hint messages to correctly display whether to guess higher/lower depending on the guess and secret number, as well as fixing the "New Game" button to actually restart the game and allow the player to input guesses again.
 
 ## 📸 Demo
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
+
+![alt text](image.png)
 
 ## 🚀 Stretch Features
 

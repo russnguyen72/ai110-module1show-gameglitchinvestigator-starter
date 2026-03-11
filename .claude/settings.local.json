@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install pytest -q)",
+      "Bash(python -m pytest tests/test_game_logic.py -v)",
+      "Bash(python3 -m pip install pytest -q)",
+      "Bash(python3 -m pytest \"c:/Users/rnguyen5704/coding-projects/codepath/ai110/ai110-module1show-gameglitchinvestigator-starter/tests/test_game_logic.py\" -v)",
+      "Bash(py -m pip install pytest -q)",
+      "Bash(py -m pytest \"c:/Users/rnguyen5704/coding-projects/codepath/ai110/ai110-module1show-gameglitchinvestigator-starter/tests/test_game_logic.py\" -v)"
+    ]
+  }
+}
