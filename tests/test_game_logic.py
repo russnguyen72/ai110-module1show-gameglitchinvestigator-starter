@@ -1,4 +1,4 @@
-from logic_utils import check_guess, update_score
+from logic_utils import check_guess, update_score, parse_guess
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -56,3 +56,49 @@ def test_too_high_and_too_low_deduct_equally():
 
 def test_unknown_outcome_does_not_change_score():
     assert update_score(75, "Unknown", 1) == 75
+
+
+def test_decimal_input_rejected():
+    ok, _, err = parse_guess("1.9")
+    assert not ok
+    assert "whole number" in err.lower()
+
+
+def test_decimal_zero_rejected():
+    ok, _, _ = parse_guess("5.0")
+    assert not ok
+
+
+def test_scientific_notation_rejected():
+    ok, _, _ = parse_guess("1e5")
+    assert not ok
+
+
+def test_scientific_notation_with_decimal_rejected():
+    ok, _, _ = parse_guess("1.5e2")
+    assert not ok
+
+
+def test_out_of_range_too_low():
+    ok, _, err = parse_guess("-5", 1, 20)
+    assert not ok
+    assert "between" in err
+
+
+def test_out_of_range_too_high():
+    ok, _, err = parse_guess("999", 1, 20)
+    assert not ok
+    assert "between" in err
+
+
+def test_in_range_valid():
+    ok, val, _ = parse_guess("10", 1, 20)
+    assert ok
+    assert val == 10
+
+
+def test_no_range_check_without_params():
+    # Without low/high args, out-of-range values still parse successfully
+    ok, val, _ = parse_guess("999")
+    assert ok
+    assert val == 999

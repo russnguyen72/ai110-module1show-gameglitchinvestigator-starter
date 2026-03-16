@@ -43,6 +43,10 @@ Some fixes that I have applied are fixing the hint messages to correctly display
 
 ![alt text](image.png)
 
+- [ ] [Insert a screenshot of pytest being ran with tests passing for Challenge 1 here]
+
+![alt text](image-1.png)
+
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
